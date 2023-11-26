@@ -1,17 +1,14 @@
 package com.example.expenses_tracker.config;
 
 import io.vertx.core.Vertx;
-import io.vertx.core.json.JsonObject;
 import io.vertx.jdbcclient.JDBCConnectOptions;
 import io.vertx.jdbcclient.JDBCPool;
 import io.vertx.sqlclient.PoolOptions;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Component
-@Slf4j
 public class JdbcConfig {
   @Autowired
   private final Vertx vertx;

@@ -7,7 +7,6 @@ import io.vertx.ext.web.RoutingContext;
 import io.vertx.jdbcclient.JDBCPool;
 import io.vertx.sqlclient.Tuple;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
