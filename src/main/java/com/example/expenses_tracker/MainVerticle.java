@@ -64,7 +64,7 @@ public class MainVerticle extends AbstractVerticle {
       });
     });
 
-    server.requestHandler(router).listen(8080, http -> {
+   server.requestHandler(router).listen(8080, http -> {
       if (http.succeeded()) {
         startPromise.complete();
         log.info("HTTP server started on port 8080");

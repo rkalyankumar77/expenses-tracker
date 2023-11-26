@@ -67,12 +67,12 @@ class ExpensesHandlerTest {
   @Test
   void getExpenseById(Vertx vertx, VertxTestContext testContext) {
     HttpClient client = vertx.createHttpClient();
-    client.request(HttpMethod.GET, 8080, "localhost", "/expenses/1")
+    client.request(HttpMethod.GET, 8080, "localhost", "/expenses/2")
       .compose(req -> req.send().compose(HttpClientResponse::body))
       .onComplete(testContext.succeeding(buffer -> {
         testContext.verify(() -> {
           JsonObject expenses = buffer.toJsonObject();
-          assertEquals(1L, expenses.getLong("ID"));
+          assertEquals(2L, expenses.getLong("ID"));
           testContext.completeNow();
         });
       }));

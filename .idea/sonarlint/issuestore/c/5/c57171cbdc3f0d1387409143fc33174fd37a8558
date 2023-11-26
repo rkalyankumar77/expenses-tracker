@@ -1,13 +1,13 @@
 
 y
-java:S1450"WRemove the "jdbcPool" field and declare it as a local variable in the relevant methods.(ÈÇÜêşÿÿÿÿ8¹«ìÚÀ1
+java:S1450"WRemove the "jdbcPool" field and declare it as a local variable in the relevant methods.(ÈÇÜêşÿÿÿÿ8ÀøÖÛÀ1
 N
-java:S1602(",Remove useless curly braces around statement(Şß”òùÿÿÿÿ8Ä«ìÚÀ1
+java:S1602(",Remove useless curly braces around statement(Şß”òùÿÿÿÿ8ÆøÖÛÀ1
 j
-java:S1612("HReplace this lambda with method reference 'expensesHandler::addExpense'.(Şß”òùÿÿÿÿ8Ä«ìÚÀ1
+java:S1612("HReplace this lambda with method reference 'expensesHandler::addExpense'.(Şß”òùÿÿÿÿ8ÇøÖÛÀ1
 N
-java:S1602,",Remove useless curly braces around statement(±•Áàÿÿÿÿÿ8É«ìÚÀ1
+java:S1602,",Remove useless curly braces around statement(±•Áàÿÿÿÿÿ8ÇøÖÛÀ1
 n
-java:S1612,"LReplace this lambda with method reference 'expensesHandler::getAllExpenses'.(±•Áàÿÿÿÿÿ8É«ìÚÀ1
+java:S1612,"LReplace this lambda with method reference 'expensesHandler::getAllExpenses'.(±•Áàÿÿÿÿÿ8ÇøÖÛÀ1
 N
-java:S1068",Remove this unused "jdbcPool" private field.(ÈÇÜêşÿÿÿÿ8É«ìÚÀ1
+java:S1068",Remove this unused "jdbcPool" private field.(ÈÇÜêşÿÿÿÿ8ÍøÖÛÀ1

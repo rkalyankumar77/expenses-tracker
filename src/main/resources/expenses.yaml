@@ -63,6 +63,22 @@ paths:
               application/json:
                 schema:
                   $ref: '#/components/schemas/Expense'
+      delete:
+        summary: Delete an expense by ID
+        operationId: deleteExpenseById
+        tags:
+          - expenses
+        parameters:
+          - name: id
+            in: path
+            description: ID of expense to delete
+            required: true
+            schema:
+              type: integer
+              format: int64
+        responses:
+          '204':
+            description: No Content
 
 components:
   schemas:
@@ -75,9 +91,6 @@ components:
         amount:
           type: number
           description: Amount of the expense
-        currency:
-          type: string
-          description: Currency of the expense
         date:
           type: string
           format: date
