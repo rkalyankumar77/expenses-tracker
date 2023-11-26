@@ -5,6 +5,7 @@ import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.jdbcclient.JDBCPool;
+import io.vertx.sqlclient.Row;
 import io.vertx.sqlclient.Tuple;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -41,6 +42,8 @@ public class ExpensesHandler {
         routingContext.response().setStatusCode(500).end();
       })
       .onSuccess(rows -> {
+        Row lastInsertId = rows.property(JDBCPool.GENERATED_KEYS);
+        expenses.setId(lastInsertId.getLong(0));
         routingContext.response().setStatusCode(201)
           .send(JsonObject.mapFrom(expenses).encode());
       });
