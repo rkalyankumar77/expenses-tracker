@@ -1,25 +1,24 @@
 package com.example.expenses_tracker.handler;
 
+import com.example.expenses_tracker.eventbus.DeleteExpenseVerticle;
 import com.example.expenses_tracker.model.Expenses;
+import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.jdbcclient.JDBCPool;
 import io.vertx.sqlclient.Row;
 import io.vertx.sqlclient.Tuple;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
+@RequiredArgsConstructor
 public class ExpensesHandler {
-
   private final JDBCPool jdbcPool;
-
-
-  public ExpensesHandler(JDBCPool jdbcPool) {
-    this.jdbcPool = jdbcPool;
-  }
+  private final Vertx vertx;
 
   public void addExpense(RoutingContext routingContext) {
     JsonObject expensesJson = routingContext.body().asJsonObject();
@@ -82,5 +81,19 @@ public class ExpensesHandler {
             .send(rows.iterator().next().toJson().encode());
         }
       });
+  }
+
+  public void deleteExpenseById(RoutingContext ctx) {
+    JsonObject expensesJson = new JsonObject();
+    expensesJson.put("ID", Long.parseLong(ctx.pathParam("id")));
+    log.info("Delete: {}", expensesJson.encodePrettily());
+    vertx.eventBus().request(DeleteExpenseVerticle.EVENT_BUS_NAME, expensesJson, reply -> {
+      if (reply.succeeded()) {
+        log.info("Deleted expense with id: {}", ctx.pathParam("id"));
+        ctx.response().setStatusCode(204).end();
+      } else {
+        ctx.response().setStatusCode(500).end();
+      }
+    });
   }
 }
