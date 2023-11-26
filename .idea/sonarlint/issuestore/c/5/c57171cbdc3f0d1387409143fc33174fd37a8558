@@ -1,0 +1,9 @@
+
+y
+java:S1450"WRemove the "jdbcPool" field and declare it as a local variable in the relevant methods.(ÈÇÜêşÿÿÿÿ8Ÿ…»ÓÀ1
+N
+java:S1602$",Remove useless curly braces around statement(Şß”òùÿÿÿÿ8•¿ÓÀ1
+N
+java:S1602(",Remove useless curly braces around statement(±•Áàÿÿÿÿÿ8–¿ÓÀ1
+N
+java:S1068",Remove this unused "jdbcPool" private field.(ÈÇÜêşÿÿÿÿ8§…»ÓÀ1

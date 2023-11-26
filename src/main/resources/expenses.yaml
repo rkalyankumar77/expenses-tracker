@@ -1,0 +1,46 @@
+# OpenAPI spec for Expenses API
+openapi: 3.0.1
+info:
+  title: Expenses API
+  description: API for managing expenses
+  version: 1.0.0
+servers:
+    - url: http://localhost:8080
+      description: Local server
+paths:
+    /expenses:
+        get:
+        summary: Get all expenses
+        operationId: getExpenses
+        tags:
+            - expenses
+        responses:
+            '200':
+            description: OK
+            content:
+                application/json:
+                schema:
+                    type: array
+                    items:
+                    $ref: '#/components/schemas/Expense'
+components:
+    schemas:
+        Expense:
+        type: object
+        properties:
+            id:
+             type: integer
+             description: Unique identifier representing a specific expense
+            amount:
+              type: number
+              description: Amount of the expense
+            currency:
+              type: string
+              description: Currency of the expense
+            date:
+              type: string
+              format: date
+              description: Date of the expense
+            description:
+              type: string
+              description: Description of the expense

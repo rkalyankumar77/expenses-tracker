@@ -1,0 +1,26 @@
+= Expenses-tracker
+
+A simple expenses tracker application using Vert.x.
+
+== Building
+
+To launch your tests:
+```
+./mvnw clean test
+```
+
+To package your application:
+```
+./mvnw clean package
+```
+
+To run your application:
+```
+./mvnw clean compile exec:java
+```
+
+*Author*: Kalyankumar R
+
+*License*: Apache License 2.0
+
+
