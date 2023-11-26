@@ -1,6 +1,11 @@
 = Expenses-tracker
 
 A simple expenses tracker application using Vert.x.
+This application provides CRUD operations for expenses.
+
+image::Expenses.png[]
+
+Update operation is not implemented yet.
 
 == Building
 
