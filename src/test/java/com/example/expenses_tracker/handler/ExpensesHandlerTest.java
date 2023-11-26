@@ -77,4 +77,16 @@ class ExpensesHandlerTest {
         });
       }));
   }
+
+  @Test
+  void deleteExpenseById(Vertx vertx, VertxTestContext testContext) {
+    HttpClient client = vertx.createHttpClient();
+    client.request(HttpMethod.DELETE, 8080, "localhost", "/expenses/1")
+      .compose(req-> req.send()).onComplete(testContext.succeeding(response -> {
+        testContext.verify(() -> {
+          assertEquals(204, response.statusCode());
+          testContext.completeNow();
+        });
+      }));
+  }
 }
