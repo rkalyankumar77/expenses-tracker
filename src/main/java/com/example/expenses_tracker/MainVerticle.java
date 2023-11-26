@@ -16,9 +16,6 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class MainVerticle extends AbstractVerticle {
-
-  private JDBCPool jdbcPool = null;
-
   @Override
   public void start(Promise<Void> startPromise) throws Exception {
     HttpServer server = vertx.createHttpServer();
@@ -37,18 +34,9 @@ public class MainVerticle extends AbstractVerticle {
     vertx.deployVerticle(new DeleteExpenseVerticle(jdbcConfig.getJdbcPool()));
 
 
-    router.post("/expenses").handler(ctx -> {
-      expensesHandler.addExpense(ctx);
-    });
-
-    router.get("/expenses").handler(ctx->{
-      expensesHandler.getAllExpenses(ctx);
-    });
-
-    router.get("/expenses/:id").handler(ctx->{
-      jdbcPool = jdbcConfig.getJdbcPool();
-      expensesHandler.getExpenseById(ctx);
-    });
+    router.post("/expenses").handler(expensesHandler::addExpense);
+    router.get("/expenses").handler(expensesHandler::getAllExpenses);
+    router.get("/expenses/:id").handler(expensesHandler::getExpenseById);
 
     router.delete("/expenses/:id").handler(ctx->{
       JsonObject expensesJson = new JsonObject();

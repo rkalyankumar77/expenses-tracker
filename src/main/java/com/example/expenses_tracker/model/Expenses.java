@@ -6,22 +6,24 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
+/**
+ * @version 1.0
+ *
+ * @startuml
+ *    !theme blueprint
+ *    class Expenses {
+ *      + Long id
+ *      + String name
+ *      + String description
+ *      + Double amount
+ *      + LocalDate date
+ *    }
+ *@enduml
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Expenses {
-  /*
-   @startuml
-   !theme blueprint
-   class Expenses {
-     + Long id
-     + String name
-     + String description
-     + Double amount
-     + LocalDate date
-   }
-   @enduml
-*/
   private Long id;
   private String name;
   private String description;

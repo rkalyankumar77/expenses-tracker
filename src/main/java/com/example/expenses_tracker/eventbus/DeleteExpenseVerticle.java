@@ -30,8 +30,6 @@ public class DeleteExpenseVerticle extends AbstractVerticle {
         log.error("Failed to delete expenses", err);
         message.fail(500, err.getMessage());
       })
-      .onSuccess(rows -> {
-        message.reply("Deleted");
-      });
+      .onSuccess(rows -> message.reply("Deleted"));
   }
 }
