@@ -5,42 +5,83 @@ info:
   description: API for managing expenses
   version: 1.0.0
 servers:
-    - url: http://localhost:8080
-      description: Local server
+  - url: http://localhost:8080
+    description: Local server
 paths:
-    /expenses:
-        get:
-        summary: Get all expenses
-        operationId: getExpenses
+  /expenses:
+    get:
+      summary: Get all expenses
+      operationId: getExpenses
+      tags:
+        - expenses
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+               type: array
+               items:
+                  $ref: '#/components/schemas/Expense'
+    post:
+      summary: Add a new expense
+      operationId: addExpense
+      tags:
+        - expenses
+      requestBody:
+        description: Expense to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Expense'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Expense'
+  /expenses/{id}:
+      get:
+        summary: Get an expense by ID
+        operationId: getExpenseById
         tags:
-            - expenses
+          - expenses
+        parameters:
+          - name: id
+            in: path
+            description: ID of expense to return
+            required: true
+            schema:
+              type: integer
+              format: int64
         responses:
-            '200':
+          '200':
             description: OK
             content:
-                application/json:
+              application/json:
                 schema:
-                    type: array
-                    items:
-                    $ref: '#/components/schemas/Expense'
+                  $ref: '#/components/schemas/Expense'
+
 components:
-    schemas:
-        Expense:
-        type: object
-        properties:
-            id:
-             type: integer
-             description: Unique identifier representing a specific expense
-            amount:
-              type: number
-              description: Amount of the expense
-            currency:
-              type: string
-              description: Currency of the expense
-            date:
-              type: string
-              format: date
-              description: Date of the expense
-            description:
-              type: string
-              description: Description of the expense
+  schemas:
+    Expense:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier representing a specific expense
+        amount:
+          type: number
+          description: Amount of the expense
+        currency:
+          type: string
+          description: Currency of the expense
+        date:
+          type: string
+          format: date
+          description: Date of the expense
+        description:
+          type: string
+          description: Description of the expense
